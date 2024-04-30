@@ -1,0 +1,6 @@
+serveur/nest-app-pfe/node_modules/
+serveur/nest-app-pfe/app/dist/
+serveur/nest-app-pfe/app/.env
+client/react-app-pfe/node_modules/
+client/react-app-pfe/build/
+client/react-app-pfe/.env

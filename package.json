@@ -1,0 +1,14 @@
+{
+  "name": "gestion_pfe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd client/react-app-pfe && npm start",
+    "start:backend": "cd serveur/nest-app-pfe && npm run start:dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
