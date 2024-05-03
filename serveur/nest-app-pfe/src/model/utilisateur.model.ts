@@ -30,7 +30,7 @@ export class Utilisateur extends Document {
   @Prop()
   specialite: string;
 
-  @Prop({ enum: ['light', 'dark'], required: true, unique: true })
+  @Prop({ enum: ['etudiant','enseignant','responsable'], required: true })
   role: string;
 
   //For the forget password option

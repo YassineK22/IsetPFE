@@ -1,0 +1,114 @@
+.cls2-1 {
+    fill: #fff;
+}
+
+.cls2-2 {
+    fill: #feeff0;
+    stroke: #f71a2f;
+}
+
+.cls2-3 {
+    fill: #111;
+    font-size: 11px;
+    font-family: SegoeUI, Segoe UI;
+}
+
+.cls2-4,
+.cls2-5,
+.cls2-6,
+.cls2-9 {
+    fill: none;
+}
+
+.cls2-5,
+.cls2-6 {
+    stroke: #f60a20;
+}
+
+.cls2-5,
+.cls2-6,
+.cls2-9 {
+    stroke-linecap: round;
+    stroke-width: 1.5px;
+}
+
+.cls2-5 {
+    stroke-linejoin: round;
+}
+
+.cls2-6,
+.cls2-9 {
+    stroke-linejoin: bevel;
+}
+
+.cls2-7 {
+    clip-path: url(#clip-path);
+}
+
+.cls2-8 {
+    fill: #f60a20;
+}
+
+.cls2-9 {
+    stroke: #000;
+}
+
+.cls2-10 {
+    stroke: none;
+}
+
+.cls2-11 {
+    filter: url(#Rectangle_344);
+}
+
+.cls-1 {
+    fill: #fff;
+}
+
+.cls-2 {
+    fill: #eef5ff;
+    stroke: #1170ff;
+}
+
+.cls-3 {
+    fill: #111;
+    font-size: 14px;
+    font-family: SegoeUI, Segoe UI;
+}
+
+.cls-4,
+.cls-5,
+.cls-8 {
+    fill: none;
+}
+
+.cls-5 {
+    stroke: #06f;
+}
+
+.cls-5,
+.cls-8 {
+    stroke-linecap: round;
+    stroke-linejoin: bevel;
+    stroke-width: 1.5px;
+}
+
+.cls-6 {
+    clip-path: url(#clip-path);
+}
+
+.cls-7 {
+    fill: #06f;
+}
+
+.cls-8 {
+    stroke: #000;
+}
+
+.cls-9 {
+    stroke: none;
+}
+
+.cls-10 {
+    filter: url(#Rectangle_344);
+}

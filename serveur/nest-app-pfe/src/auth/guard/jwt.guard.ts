@@ -8,10 +8,10 @@ export class JwtGuard extends AuthGuard('jwt') {
   }
 }
 
+//ResponsableGuard
 @Injectable()
 export class AdminGuard implements CanActivate {
   canActivate(context: ExecutionContext): boolean {
-    // check if the user has the role "responsable" in the JWT token
     //get the data from the incoming HTTP request, such as headers, parameters, body
     const request = context.switchToHttp().getRequest();
     const user = request.user;
@@ -21,5 +21,35 @@ export class AdminGuard implements CanActivate {
     }
 
     return false; // Deny access if user is not admin
+  }
+}
+
+//EtudiantGuard
+export class EtudiantGuard implements CanActivate {
+  canActivate(context: ExecutionContext): boolean {
+    //get the data from the incoming HTTP request, such as headers, parameters, body
+    const request = context.switchToHttp().getRequest();
+    const user = request.user;
+
+    if (user && user.role === 'etudiant') {
+      return true; // Allow access if user is etudiant
+    }
+
+    return false; // Deny access if user is not etudiant
+  }
+}
+
+//EnseignantGuard
+export class EnseignantGuard implements CanActivate {
+  canActivate(context: ExecutionContext): boolean {
+    //get the data from the incoming HTTP request, such as headers, parameters, body
+    const request = context.switchToHttp().getRequest();
+    const user = request.user;
+
+    if (user && user.role === 'enseignant') {
+      return true; // Allow access if user is enseignant
+    }
+
+    return false; // Deny access if user is not enseignant
   }
 }

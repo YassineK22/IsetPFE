@@ -29,7 +29,7 @@ export class AuthService {
     loginData: AuthDto,
   ): Promise<{ message: string; access_token: string }> {
     const utilisateur = await this.utilisateurModel
-      .findOne({ identifiant: loginData.pieceIdentite })
+      .findOne({ pieceIdentite: loginData.pieceIdentite })
       .exec();
 
     if (!utilisateur) {
@@ -55,11 +55,11 @@ export class AuthService {
   }
 
   async findByCredentials(
-    identifiant: string,
+    pieceIdentite: string,
     motDePasse: string,
   ): Promise<Utilisateur | null> {
     const utilisateur = await this.utilisateurModel
-      .findOne({ identifiant })
+      .findOne({ pieceIdentite })
       .exec();
 
     if (!utilisateur) {
@@ -77,6 +77,11 @@ export class AuthService {
     inputPassword: string,
     storedPassword: string,
   ): Promise<boolean> {
+    // Check if both inputPassword and storedPassword are provided
+    if (!inputPassword || !storedPassword) {
+      throw new Error('Input password and stored password are required');
+    }
+
     // Use bcrypt to compare hashed passwords
     return await bcrypt.compare(inputPassword, storedPassword);
   }
@@ -85,12 +90,14 @@ export class AuthService {
     // Hash the password before saving it to the database
     const hashedPassword = await bcrypt.hash(utilisateur.motDePasse, 10);
 
-    // Check if the user with the same identifiant already exists
+    // Check if the user with the same pieceIdentite already exists
     const existingUser = await this.utilisateurModel
-      .findOne({ identifiant: utilisateur.pieceIdentite })
+      .findOne({ pieceIdentite: utilisateur.pieceIdentite })
       .exec();
     if (existingUser) {
-      throw new ConflictException('User with this identifiant already exists');
+      throw new ConflictException(
+        'User with this pieceIdentite already exists',
+      );
     }
 
     // Save the user with the hashed password

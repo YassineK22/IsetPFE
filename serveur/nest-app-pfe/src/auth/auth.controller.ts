@@ -4,7 +4,6 @@ import {
   Body,
   HttpStatus,
   HttpException,
-  NotFoundException,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthDto } from './dto';
@@ -23,7 +22,7 @@ export class AuthController {
   
         return { message, access_token };
       } catch (error) {
-        throw error; // rethrow other errors
+        throw error;
       }
     }
   
@@ -43,7 +42,7 @@ export class AuthController {
         await this.authService.requestPasswordReset(email);
         return { message: 'Password reset email sent' };
       } catch (error) {
-        throw error; // Rethrow other errors
+        throw error; 
       }
     }
   
@@ -55,7 +54,7 @@ export class AuthController {
         await this.authService.verifyPasswordReset(data.token, data.newPassword);
         return { message: 'Password reset successful' };
       } catch (error) {
-        throw error; // Rethrow other errors
+        throw error; 
       }
     }
   }

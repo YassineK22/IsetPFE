@@ -1,0 +1,71 @@
+/* CircularStd Black */
+@font-face {
+    font-family: 'CircularStd-Black';
+    src: url('../fonts/CircularStd-Black.ttf') format('truetype'),
+        url('../fonts/CircularStd-Black.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* CircularStd Black Italic */
+@font-face {
+    font-family: 'CircularStd-BlackItalic';
+    src: url('../fonts/CircularStd-BlackItalic.ttf') format('truetype'),
+        url('../fonts/CircularStd-BlackItalic.otf') format('opentype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+/* CircularStd Bold */
+@font-face {
+    font-family: 'CircularStd-Bold';
+    src: url('../fonts/CircularStd-Bold.ttf') format('truetype'),
+        url('../fonts/CircularStd-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* CircularStd Bold Italic */
+@font-face {
+    font-family: 'CircularStd-BoldItalic';
+    src: url('../fonts/CircularStd-BoldItalic.ttf') format('truetype'),
+        url('../fonts/CircularStd-BoldItalic.otf') format('opentype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* CircularStd Book */
+@font-face {
+    font-family: 'CircularStd-Book';
+    src: url('../fonts/CircularStd-Book.ttf') format('truetype'),
+        url('../fonts/CircularStd-Book.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* CircularStd Book Italic */
+@font-face {
+    font-family: 'CircularStd-BookItalic';
+    src: url('../fonts/CircularStd-BookItalic.ttf') format('truetype'),
+        url('../fonts/CircularStd-BookItalic.otf') format('opentype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+/* CircularStd Medium */
+@font-face {
+    font-family: 'CircularStd-Medium';
+    src: url('../fonts/CircularStd-Medium.ttf') format('truetype'),
+        url('../fonts/CircularStd-Medium.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* CircularStd Medium Italic */
+@font-face {
+    font-family: 'CircularStd-MediumItalic';
+    src: url('../fonts/CircularStd-MediumItalic.ttf') format('truetype'),
+        url('../fonts/CircularStd-MediumItalic.otf') format('opentype');
+    font-weight: normal;
+    font-style: italic;
+}
