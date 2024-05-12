@@ -88,12 +88,6 @@ const SeConnecter = () => {
           </button>
           <div className="center">
             <span className="label-1">
-              Vous N'aver Pas Un Compte ?
-              <Link className="link" to="/sinscrire">
-                {" "}
-                S'inscrire
-              </Link>
-              <br />
               <Link className="link" to="/motdepasseoubliee">
                 {" "}
                 Mot De Passe Oublié ?

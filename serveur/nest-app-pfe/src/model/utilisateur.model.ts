@@ -9,7 +9,7 @@ export class Utilisateur extends Document {
   @Prop({ required: true })
   prenom: string;
 
-  @Prop({ required: true })
+  @Prop({enum: ['M', 'F'], required: true })
   sexe: string;
 
   @Prop({ required: true, unique: true })

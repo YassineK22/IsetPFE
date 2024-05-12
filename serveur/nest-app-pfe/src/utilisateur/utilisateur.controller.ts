@@ -1,12 +1,9 @@
-// utilisateur.controller.ts
-
 import { Controller, Get, Post, Body, Param, Query, UseGuards } from '@nestjs/common';
 import { UtilisateurService } from './utilisateur.service';
 import { UpdateUtilisateurDto } from './dto';
 import { Utilisateur } from 'src/model/utilisateur.model';
 import { AdminGuard, JwtGuard } from 'src/auth/guard';
 
-@UseGuards(JwtGuard,AdminGuard)
 @Controller('utilisateur')
 export class UtilisateurController {
   constructor(private readonly utilisateurService: UtilisateurService) {}
