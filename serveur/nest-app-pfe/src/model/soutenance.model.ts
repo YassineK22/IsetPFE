@@ -1,22 +1,33 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
+
+export enum EtatSoutenance{
+  premier = 'premier',
+  enAttente = 'enAttente',
+  confirmer = 'confirmer',
+  annuler = 'annuler',
+}
+
 @Schema()
 export class Soutenance extends Document {
-  @Prop({ required: true, type: Number })
+  @Prop({ type: Number })
   noteTechnique: number;
 
-  @Prop({ required: true, type: Number })
+  @Prop({ type: Number })
   notePresentation: number;
 
-  @Prop({ required: true })
+  @Prop()
   jugeTechnique: string;
 
-  @Prop({ required: true })
+  @Prop()
   jugePresentation: string;
 
-  @Prop({ required: true })
+  @Prop({enum: EtatSoutenance, default: EtatSoutenance.premier})
   etat: string;
+
+  @Prop({ required: true })
+  rapport : string;
 }
 
 export const SoutenanceSchema = SchemaFactory.createForClass(Soutenance);

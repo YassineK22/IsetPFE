@@ -3,6 +3,8 @@ import { UtilisateurModule } from './utilisateur/utilisateur.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { SoutenanceModule } from './soutenance/soutenance.module';
+import { ProjetModule } from './projet/projet.module';
 
 @Module({
   imports: [
@@ -17,6 +19,8 @@ import { MongooseModule } from '@nestjs/mongoose';
     }),
     AuthModule,
     UtilisateurModule,
+    SoutenanceModule,
+    ProjetModule,
   ],
   controllers: [],
   providers: [],

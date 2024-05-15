@@ -26,7 +26,7 @@ export class AdminGuard implements CanActivate {
 
 //EtudiantGuard
 export class EtudiantGuard implements CanActivate {
-  canActivate(context: ExecutionContext): boolean {
+   canActivate(context: ExecutionContext): boolean {
     //get the data from the incoming HTTP request, such as headers, parameters, body
     const request = context.switchToHttp().getRequest();
     const user = request.user;
