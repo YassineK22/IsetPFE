@@ -62,7 +62,7 @@ const DropdownProfile = ({ align }) => {
         />
         <div className="flex items-center truncate">
           <span className="truncate ml-2 text-sm font-medium dark:text-slate-300 group-hover:text-slate-800 dark:group-hover:text-slate-200">
-            {payloadSM.email}
+          {payloadSM? payloadSM.email : ""}
           </span>
           <svg
             className="w-3 h-3 shrink-0 ml-1 fill-current text-slate-400"
@@ -92,10 +92,10 @@ const DropdownProfile = ({ align }) => {
         >
           <div className="pt-0.5 pb-2 px-3 mb-1 border-b border-slate-200 dark:border-slate-700">
             <div className="font-medium text-slate-800 dark:text-slate-100">
-              {payloadSM.email}
+            {payloadSM? payloadSM.email : ""}
             </div>
             <div className="text-xs text-slate-500 dark:text-slate-400 italic">
-              {payloadSM.role || UPPER}
+              {payloadSM? payloadSM.role : ""}
             </div>
           </div>
           <ul>

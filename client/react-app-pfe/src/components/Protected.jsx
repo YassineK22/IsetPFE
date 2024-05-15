@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
 import axiosInstance from "./axiosInstance";
 import SeConnecter from "../pages/SeConnecter";
 
 const Protected = (props) => {
-  const { Component, hideHeader } = props;
+  const { Component } = props;
   const navigate = useNavigate();
 
   useEffect(() => {

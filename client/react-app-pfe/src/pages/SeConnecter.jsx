@@ -27,7 +27,7 @@ const SeConnecter = () => {
       // Reload the page
       setTimeout(() => {
         window.location.reload();
-      }, 50);
+      }, (50));
     } catch (error) {
       console.error("Error during login:", error);
 
