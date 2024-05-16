@@ -34,6 +34,7 @@ const Dashboard = () => {
 
   return (
     <div className="flex h-screen overflow-hidden">
+      <br />
       {/* Sidebar */}
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 

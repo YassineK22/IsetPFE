@@ -31,15 +31,21 @@ const DashStageE = () => {
       case "premier":
         return <DemandeEncadrement />;
       case "Attpremier":
-        return <div>Projet EnAttente d'acceptation</div>;
+        return (
+          <div class="text-yellow-600">Projet EnAttente d'acceptation</div>
+        );
       case "nonPremier":
-        return <div>Projet non accepté</div>;
+        return <div class="text-red-600">Projet non accepté</div>;
       case "enAttente":
-        return <div>En attente de l'acceptation de l'encadrement</div>;
+        return (
+          <div class="text-teal-600">
+            En attente de l'acceptation de l'encadrement
+          </div>
+        );
       case "confirmer":
         return <ResultatStageE />;
       case "annuler":
-        return <div>L'encadrement n'a pas accepté</div>;
+        return <div class="text-red-600">L'encadrement n'a pas accepté</div>;
       default:
         return <DemandePFE />;
     }

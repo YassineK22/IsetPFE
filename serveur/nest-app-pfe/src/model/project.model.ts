@@ -3,15 +3,6 @@ import { Document } from 'mongoose';
 import { EntrepriseAccueil } from './entreprise-accueil.model';
 import { EncadreurEntreprise } from './encadreur-entreprise.model';
 
-export enum EtatProjet {
-  premier = 'premier',
-  Attpremier = 'Attpremier',
-  nonPremier = 'nonPremier',
-  enAttente = 'enAttente',
-  confirmer = 'confirmer',
-  annuler = 'annuler',
-}
-
 @Schema()
 export class Projet extends Document {
   @Prop({ required: true, unique: true })
@@ -38,7 +29,11 @@ export class Projet extends Document {
   @Prop()
   attestation: string;
 
-  @Prop({ enum: EtatProjet, default: EtatProjet.Attpremier })
+  @Prop({
+    type: String,
+    enum: ['premier', 'Attpremier', 'nonPremier', 'enAttente', 'confirmer', 'annuler'],
+    default: 'Attpremier',
+  })
   etatProjet: string;
 }
 
