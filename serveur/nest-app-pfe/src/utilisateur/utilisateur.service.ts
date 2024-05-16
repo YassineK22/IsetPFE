@@ -70,4 +70,53 @@ export class UtilisateurService {
     // Count documents based on the constructed query
     return await this.utilisateurModel.countDocuments(query).exec();
   }
+
+  async getAllEnseignantsPageSearch(
+    page: number,
+    pageSize: number,
+    searchQuery: string,
+    searchCategory: string,
+  ): Promise<Utilisateur[]> {
+    const skip = (page - 1) * pageSize;
+    let query = {}; // Filter for enseignants only
+
+    // Add search criteria to the query
+    if (searchCategory === 'tous') {
+      query = {
+        $or: [
+          { nom: { $regex: searchQuery, $options: 'i' } },
+          { email: { $regex: searchQuery, $options: 'i' } },
+          { telephone: { $regex: searchQuery, $options: 'i' } },
+          { sexe: { $regex: searchQuery, $options: 'i' } },
+          { pieceIdentite: { $regex: searchQuery, $options: 'i' } },
+          { specialite: { $regex: searchQuery, $options: 'i' } },
+          { role: { $regex: 'enseignant', $options: 'i' } },
+        ],
+      };
+    } else {
+      query[searchCategory] = { $regex: searchQuery, $options: 'i' };
+    }
+
+    // Fetch enseignants based on the constructed query
+    return await this.utilisateurModel
+      .find(query)
+      .skip(skip)
+      .limit(pageSize)
+      .exec();
+  }
+
+  async getTotalEnseignantsCount(
+    searchQuery: string,
+    searchCategory: string,
+  ): Promise<number> {
+    let query: any = { role: 'enseignant' }; // Filter for enseignants only
+
+    // Add search query if provided
+    if (searchQuery && searchCategory) {
+      query[searchCategory] = { $regex: searchQuery, $options: 'i' };
+    }
+
+    // Count documents based on the constructed query
+    return await this.utilisateurModel.countDocuments(query).exec();
+  }
 }

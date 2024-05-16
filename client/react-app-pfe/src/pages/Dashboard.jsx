@@ -10,6 +10,8 @@ import DashStageR from "../components/DashStageR";
 import DashDemandesEncadrement from "../components/DashDemandesEncadrement";
 import DashValidationStage from "../components/DashValidationStage";
 import DashValidationResultat from "../components/DashValidationResultat";
+import DashAffecterEncadrent from "../components/DashAffecterEncadrent";
+import DashAffecterJury from "../components/DashAffecterJury";
 
 const Dashboard = () => {
   const location = useLocation();
@@ -65,6 +67,12 @@ const Dashboard = () => {
           {tab === "VaildationResultat" &&
             payloadSM &&
             payloadSM.role === "responsable" && <DashValidationResultat />}
+          {tab === "AffecterEncadrent" &&
+            payloadSM &&
+            payloadSM.role === "responsable" && <DashAffecterEncadrent />}
+             {tab === "AffecterJury" &&
+            payloadSM &&
+            payloadSM.role === "responsable" && <DashAffecterJury />}
         </main>
       </div>
     </div>

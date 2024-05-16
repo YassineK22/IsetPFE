@@ -42,4 +42,9 @@ export class SoutenanceController {
     const soutenance = await this.soutenanceService.editSoutenance(id, data);
     return { soutenance };
   }
+
+  @Get(':id/resultat')
+  async getResultat(@Param('id') id: string): Promise<number> {
+    return this.soutenanceService.getResultat(id);
+  }
 }

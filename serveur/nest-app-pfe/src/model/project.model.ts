@@ -1,14 +1,22 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
+import { EntrepriseAccueil } from './entreprise-accueil.model';
+import { EncadreurEntreprise } from './encadreur-entreprise.model';
 
 export enum EtatProjet {
   premier = 'premier',
+  Attpremier = 'Attpremier',
+  nonPremier = 'nonPremier',
   enAttente = 'enAttente',
   confirmer = 'confirmer',
   annuler = 'annuler',
 }
+
 @Schema()
 export class Projet extends Document {
+  @Prop({ required: true, unique: true })
+  idEtudiant: string;
+
   @Prop({ required: true })
   titre: string;
 
@@ -18,11 +26,11 @@ export class Projet extends Document {
   @Prop({ required: true })
   natureSujet: string;
 
-  @Prop({ required: true })
-  entrepriseAccuel: string;
+  @Prop({ type: EntrepriseAccueil, required: true })
+  entrepriseAccuel: EntrepriseAccueil;
 
-  @Prop()
-  encadreurEntreprise: string;
+  @Prop({ type: EncadreurEntreprise, required: true })
+  encadreurEntreprise: EncadreurEntreprise;
 
   @Prop()
   encadreurEnseignant: string;
@@ -30,7 +38,7 @@ export class Projet extends Document {
   @Prop()
   attestation: string;
 
-  @Prop({enum: EtatProjet, default: EtatProjet.premier})
+  @Prop({ enum: EtatProjet, default: EtatProjet.Attpremier })
   etatProjet: string;
 }
 

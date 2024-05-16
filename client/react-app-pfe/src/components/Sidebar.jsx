@@ -210,7 +210,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                                 }
                               >
                                 <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                                  Validation Stage
+                                  Validation des Stage
                                 </span>
                               </NavLink>
                             </li>
@@ -227,7 +227,41 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                                 }
                               >
                                 <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                                  Validation Resultat
+                                  Validation des Resultat
+                                </span>
+                              </NavLink>
+                            </li>
+                            {/* Affecter Encadrent */}
+                            <li className="mb-1 last:mb-0">
+                              <NavLink
+                                end
+                                to="/dashboard?tab=AffecterEncadrent&section=PFE"
+                                className={
+                                  "block transition duration-150 truncate " +
+                                  (tab === "AffecterEncadrent"
+                                    ? "text-indigo-500"
+                                    : "text-slate-400 hover:text-slate-200")
+                                }
+                              >
+                                <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                                  Affecter les Encadrent
+                                </span>
+                              </NavLink>
+                            </li>
+                            {/* Affecter Jury */}
+                            <li className="mb-1 last:mb-0">
+                              <NavLink
+                                end
+                                to="/dashboard?tab=AffecterJury&section=PFE"
+                                className={
+                                  "block transition duration-150 truncate " +
+                                  (tab === "AffecterJury"
+                                    ? "text-indigo-500"
+                                    : "text-slate-400 hover:text-slate-200")
+                                }
+                              >
+                                <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                                  Affecter les Jury
                                 </span>
                               </NavLink>
                             </li>

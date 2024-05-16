@@ -20,6 +20,10 @@ export class ProjetService {
     return this.projetModel.findById(id).exec();
   }
 
+  async getProjetByIdEtudiant(idEtudiant: string): Promise<Projet> {
+    return this.projetModel.findOne({ idEtudiant }).exec();
+  }
+
   async getProjetsByEncadreurEnseignant(encadreurEnseignant: string): Promise<Projet[]> {
     return this.projetModel.find({ encadreurEnseignant }).exec();
   }

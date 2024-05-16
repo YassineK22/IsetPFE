@@ -3,8 +3,6 @@ import { Document } from 'mongoose';
 
 @Schema()
 export class EncadreurEntreprise extends Document {
-  @Prop({ required: true })
-  nomEncadreurEntreprise: string;
 
   @Prop({ required: true })
   nomEncadreurE: string;

@@ -36,4 +36,16 @@ export class SoutenanceService {
     }
     return soutenance;
   }
+
+  async getResultat(id: string): Promise<number> {
+    const soutenance = await this.getSoutenanceById(id);
+    if (!soutenance) {
+      throw new NotFoundException('Soutenance not found');
+    }
+
+    // Calculate the result by adding the two notes and dividing by 2
+    const resultat =
+      (soutenance.noteTechnique * 0.6 + soutenance.notePresentation * 0.4);
+    return resultat;
+  }
 }

@@ -31,6 +31,11 @@ export class ProjetController {
     return this.projetService.getProjetById(id);
   }
 
+  @Get('etudiant/:idEtudiant') // New endpoint to get project by idEtudiant
+  async getProjetByIdEtudiant(@Param('idEtudiant') idEtudiant: string): Promise<Projet> {
+    return this.projetService.getProjetByIdEtudiant(idEtudiant);
+  }
+
   @UseGuards(EnseignantGuard)
   @Get('encadreur/:encadreurEnseignant')
   async getProjetsByEncadreurEnseignant(@Param('encadreurEnseignant') encadreurEnseignant: string): Promise<Projet[]> {
