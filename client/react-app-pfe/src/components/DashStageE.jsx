@@ -9,6 +9,7 @@ const DashStageE = () => {
 
   const payloadSM = JSON.parse(localStorage.getItem("payload_SM"));
 
+  
   const changeNoEtat = async () => {
     try {
       const response = await axiosInstance.patch(
