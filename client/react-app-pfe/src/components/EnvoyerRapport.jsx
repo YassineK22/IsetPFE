@@ -30,7 +30,7 @@ const EnvoyerRapport = () => {
         rapport: soutenanceForm.rapport,
       };
 
-      await axiosInstance.post("/soutenance", data);
+      await axiosInstance.post("/soutenance", data); 
       setFormSubmitted(true);
     } catch (error) {
       console.error("Error adding projet:", error);
