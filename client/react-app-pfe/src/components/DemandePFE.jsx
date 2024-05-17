@@ -383,7 +383,7 @@ const DemandePFE = () => {
           }`}
           disabled={formSubmitted}
         >
-          {formSubmitted ? "Demande PFE envoyée" : "Submit"}
+          {formSubmitted ? "Demande PFE envoyée" : "Envoyer"}
         </button>
       </form>
     </div>

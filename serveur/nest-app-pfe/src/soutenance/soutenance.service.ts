@@ -19,8 +19,35 @@ export class SoutenanceService {
     return this.soutenanceModel.findById(id).exec();
   }
 
-  async createSoutenance(rapport: string): Promise<Soutenance> {
-    const soutenance = new this.soutenanceModel({ rapport });
+  async getAllSoutenancesByState(state: string): Promise<Soutenance[]> {
+    return this.soutenanceModel.find({ etat: state }).exec();
+  }
+
+  async getAllSoutenancesAttpremier(): Promise<Soutenance[]> {
+    return this.getAllSoutenancesByState('Attpremier');
+  }
+
+  async getAllSoutenancesPremier(): Promise<Soutenance[]> {
+    return this.getAllSoutenancesByState('premier');
+  }
+
+  async getAllSoutenancesNoteDonner(): Promise<Soutenance[]> {
+    return this.getAllSoutenancesByState('noteDonner');
+  }
+
+  async getSoutenanceByStudentId(idEtudiant: string): Promise<Soutenance> {
+    const soutenance = await this.soutenanceModel.findOne({ idEtudiant }).exec();
+    if (!soutenance) {
+      throw new NotFoundException('Soutenance not found for the given student id');
+    }
+    return soutenance;
+  }
+
+  async createSoutenance(
+    idEtudiant: string,
+    rapport: string,
+  ): Promise<Soutenance> {
+    const soutenance = new this.soutenanceModel({ idEtudiant, rapport });
     return await soutenance.save();
   }
 
@@ -45,7 +72,45 @@ export class SoutenanceService {
 
     // Calculate the result by adding the two notes and dividing by 2
     const resultat =
-      (soutenance.noteTechnique * 0.6 + soutenance.notePresentation * 0.4);
+      soutenance.noteTechnique * 0.6 + soutenance.notePresentation * 0.4;
     return resultat;
+  }
+
+  async changeEtatSoutenance(id: string, etat: string): Promise<Soutenance> {
+    const updatedSoutenance = await this.soutenanceModel
+      .findByIdAndUpdate(id, { etat }, { new: true })
+      .exec();
+    if (!updatedSoutenance) {
+      throw new NotFoundException('Could not find soutenance.');
+    }
+    return updatedSoutenance;
+  }
+
+  async changeEtatPremier(id: string): Promise<Soutenance> {
+    return this.changeEtatSoutenance(id, 'premier');
+  }
+
+  async changeEtatAttpremier(id: string): Promise<Soutenance> {
+    return this.changeEtatSoutenance(id, 'Attpremier');
+  }
+
+  async changeEtatNonPremier(id: string): Promise<Soutenance> {
+    return this.changeEtatSoutenance(id, 'nonPremier');
+  }
+
+  async changeEtatEnAttenteS(id: string): Promise<Soutenance> {
+    return this.changeEtatSoutenance(id, 'enAttenteS');
+  }
+
+  async changeEtatNoteDonner(id: string): Promise<Soutenance> {
+    return this.changeEtatSoutenance(id, 'noteDonner');
+  }
+
+  async changeEtatNoteValider(id: string): Promise<Soutenance> {
+    return this.changeEtatSoutenance(id, 'noteValider');
+  }
+
+  async changeEtatNoteNValider(id: string): Promise<Soutenance> {
+    return this.changeEtatSoutenance(id, 'noteNValider');
   }
 }

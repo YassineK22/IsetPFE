@@ -10,7 +10,7 @@ import {
 import { UtilisateurService } from './utilisateur.service';
 import { UpdateUtilisateurDto } from './dto';
 import { Utilisateur } from 'src/model/utilisateur.model';
-import { AdminGuard, JwtGuard } from 'src/auth/guard';
+import { AdminGuard, EnseignantGuard, JwtGuard } from 'src/auth/guard';
 
 @UseGuards(JwtGuard)
 @Controller('utilisateur')
@@ -73,8 +73,7 @@ export class UtilisateurController {
     );
   }
 
-  @UseGuards(AdminGuard)
-  @Get(':id')
+  @Get('user/:id')
   async getUserById(@Param('id') id: string): Promise<Utilisateur> {
     return await this.utilisateurService.getUserById(id);
   }

@@ -26,6 +26,14 @@ export class ProjetService {
     return this.projetModel.find({ etatProjet: 'Attpremier' }).exec();
   }
 
+  async getAllProjectsEnAttente(): Promise<Projet[]> {
+    return this.projetModel.find({ etatProjet: 'enAttente' }).exec();
+  }
+
+  async getAllProjectsEnAttenteR(): Promise<Projet[]> {
+    return this.projetModel.find({ etatProjet: 'enAttenteR' }).exec();
+  }
+
   async getProjetByIdEtudiant(idEtudiant: string): Promise<Projet> {
     return this.projetModel.findOne({ idEtudiant }).exec();
   }

@@ -27,10 +27,14 @@ export class ProjetController {
     return this.projetService.getAllProjectsAttpremier();
   }
 
-  @UseGuards(AdminGuard)
   @Get('en-attente')
   async getAllProjectsEnAttente(): Promise<Projet[]> {
-    return this.projetService.getAllProjects('enAttente');
+    return this.projetService.getAllProjectsEnAttente();
+  }
+
+  @Get('en-attenteR')
+  async getAllProjectsEnAttenteR(): Promise<Projet[]> {
+    return this.projetService.getAllProjectsEnAttenteR();
   }
 
   @UseGuards(AdminGuard)
@@ -83,7 +87,12 @@ export class ProjetController {
     return await this.projetService.changeEtatProjet(id, 'enAttente');
   }
 
-  @UseGuards(AdminGuard)
+  @Patch('change-etat/enAttenteR/:id')
+  async changeEtatEnAttenteR(@Param('id') id: string) {
+    return await this.projetService.changeEtatProjet(id, 'enAttente');
+  }
+
+
   @Patch('change-etat/confirmer/:id')
   async changeEtatConfirmer(@Param('id') id: string) {
     return await this.projetService.changeEtatProjet(id, 'confirmer');

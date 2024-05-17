@@ -1,4 +1,4 @@
-import React , { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axiosInstance from "./axiosInstance";
 
 const DashStageR = () => {
@@ -22,7 +22,9 @@ const DashStageR = () => {
 
   const getEtudiant = async (idEtudiant) => {
     try {
-      const response = await axiosInstance.get(`/utilisateur/${idEtudiant}`);
+      const response = await axiosInstance.get(
+        `/utilisateur/user/${idEtudiant}`
+      );
       console.log(response.data);
       setEtudiant(response.data);
     } catch (error) {
@@ -38,7 +40,6 @@ const DashStageR = () => {
   const closeModal = () => {
     toggleModal();
   };
-
 
   return (
     <div>
@@ -106,6 +107,9 @@ const DashStageR = () => {
                 Nom encadreur entreprise
               </th>
               <th scope="col" className="px-6 py-3">
+                Encadreur enseignant
+              </th>
+              <th scope="col" className="px-6 py-3">
                 Attestation d'inscription
               </th>
               <th scope="col" className="px-6 py-3">
@@ -144,6 +148,25 @@ const DashStageR = () => {
                   {project.encadreurEntreprise.nomEncadreurE}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
+                  {project.encadreurEnseignant ? (
+                    <button
+                      onClick={() => {
+                        toggleModal();
+                        getEtudiant(project.encadreurEnseignant);
+                      }}
+                      className="block mr-1 pr-3 pl-3 pb-1 text-white bg-orange-500 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
+                      type="button"
+                    >
+                      <span className="material-symbols-outlined">
+                        visibility
+                      </span>
+                    </button>
+                  ) : (
+                    "null"
+                  )}
+                </td>
+
+                <td className="px-6 py-4 whitespace-nowrap">
                   {project.attestation}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
@@ -165,7 +188,9 @@ const DashStageR = () => {
           <div className="relative bg-white rounded-lg shadow-lg dark:bg-gray-700">
             <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                Détails de l'étudiant
+                {etudiantData.role === "etudiant"
+                  ? "Détails de l'étudiant"
+                  : "Détails de l'enseignant"}
               </h3>
               <button
                 onClick={closeModal}

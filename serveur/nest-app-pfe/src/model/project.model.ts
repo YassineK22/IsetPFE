@@ -31,7 +31,15 @@ export class Projet extends Document {
 
   @Prop({
     type: String,
-    enum: ['premier', 'Attpremier', 'nonPremier', 'enAttente', 'confirmer', 'annuler'],
+    enum: [
+      'premier',
+      'Attpremier',
+      'nonPremier',
+      'enAttente',
+      'enAttenteR',
+      'confirmer',
+      'annuler',
+    ],
     default: 'Attpremier',
   })
   etatProjet: string;

@@ -36,7 +36,9 @@ const DashValidationStage = () => {
 
   const getEtudiant = async (idEtudiant) => {
     try {
-      const response = await axiosInstance.get(`/utilisateur/${idEtudiant}`);
+      const response = await axiosInstance.get(
+        `/utilisateur/user/${idEtudiant}`
+      );
       console.log(response.data);
       setEtudiant(response.data);
     } catch (error) {

@@ -67,6 +67,12 @@ const DashStageE = () => {
             En attente de l'acceptation de l'encadrement
           </div>
         );
+      case "enAttenteR":
+        return (
+          <div className="text-gray-500">
+            En attente de la validation du responsable
+          </div>
+        );
       case "confirmer":
         return <ResultatStageE />;
       case "annuler":
