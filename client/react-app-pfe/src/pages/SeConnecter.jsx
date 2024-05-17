@@ -23,7 +23,7 @@ const SeConnecter = () => {
       localStorage.setItem("authToken", response.data.access_token);
 
       // Redirect the user to /dashboard
-      navigate("/dashboard");
+      navigate("/dashboard?tab=Stage");
       // Reload the page
       setTimeout(() => {
         window.location.reload();

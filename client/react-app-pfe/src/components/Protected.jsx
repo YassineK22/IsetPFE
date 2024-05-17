@@ -21,7 +21,7 @@ const Protected = (props) => {
           const data = response.data;
           localStorage.setItem("payload_SM", JSON.stringify(data));
           if (Component === SeConnecter || Component === "MotDePasseOubliee") {
-            navigate("/dashboard");
+            navigate("/dashboard?tab=Stage");
           }
         } catch (error) {
           // If there's an error (e.g., token is invalid), set isAuthenticated to false

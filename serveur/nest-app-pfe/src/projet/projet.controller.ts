@@ -78,7 +78,6 @@ export class ProjetController {
     return await this.projetService.updateAllProjet(id, body);
   }
 
-  @UseGuards(AdminGuard)
   @Patch('change-etat/enAttente/:id')
   async changeEtatEnAttente(@Param('id') id: string) {
     return await this.projetService.changeEtatProjet(id, 'enAttente');
@@ -101,8 +100,13 @@ export class ProjetController {
   }
 
   @Patch('change-etat/Attpremier/:id')
-  async changeEtatAttpremier(@Param('id') id: string) {
+  async changeNoEtat(@Param('id') id: string) {
     return await this.projetService.changeEtatProjet(id,  'Attpremier');
+  }
+
+  @Patch('change-etat/NoEtat/etudiant/:idEtudiant')
+  async changeEtatAttpremierEtudiant(@Param('idEtudiant') idEtudiant: string) {
+    return await this.projetService.changeEtatProjetByIdEtudiant(idEtudiant, '');
   }
 
   @Patch('change-etat/nonPremier/:id')

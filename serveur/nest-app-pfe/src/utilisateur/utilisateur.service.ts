@@ -72,38 +72,41 @@ export class UtilisateurService {
   }
 
   async getAllEnseignantsPageSearch(
-    page: number,
-    pageSize: number,
     searchQuery: string,
     searchCategory: string,
   ): Promise<Utilisateur[]> {
-    const skip = (page - 1) * pageSize;
-    let query = {}; // Filter for enseignants only
-
+    let query: any = { role: { $regex: 'enseignant', $options: 'i' } }; // Filter for enseignants only
+  
+    // Projection to retrieve only the desired fields
+    const projection = {
+      nom: 1,
+      prenom: 1,
+      email: 1,
+      specialite: 1,
+      _id: 1,
+    };
+  
     // Add search criteria to the query
-    if (searchCategory === 'tous') {
-      query = {
-        $or: [
+    if (searchQuery) {
+      if (searchCategory === 'tous') {
+        query.$or = [
           { nom: { $regex: searchQuery, $options: 'i' } },
+          { prenom: { $regex: searchQuery, $options: 'i' } },
           { email: { $regex: searchQuery, $options: 'i' } },
           { telephone: { $regex: searchQuery, $options: 'i' } },
           { sexe: { $regex: searchQuery, $options: 'i' } },
           { pieceIdentite: { $regex: searchQuery, $options: 'i' } },
           { specialite: { $regex: searchQuery, $options: 'i' } },
-          { role: { $regex: 'enseignant', $options: 'i' } },
-        ],
-      };
-    } else {
-      query[searchCategory] = { $regex: searchQuery, $options: 'i' };
+        ];
+      } else {
+        query[searchCategory] = { $regex: searchQuery, $options: 'i' };
+      }
     }
-
-    // Fetch enseignants based on the constructed query
-    return await this.utilisateurModel
-      .find(query)
-      .skip(skip)
-      .limit(pageSize)
-      .exec();
+  
+    // Fetch enseignants based on the constructed query and projection
+    return await this.utilisateurModel.find(query, projection).exec();
   }
+  
 
   async getTotalEnseignantsCount(
     searchQuery: string,

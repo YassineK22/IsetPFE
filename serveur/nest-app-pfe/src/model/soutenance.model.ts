@@ -14,6 +14,9 @@ export class Soutenance extends Document {
   @Prop({ type: Number })
   noteTechnique: number;
 
+  @Prop({ required: true, unique: true })
+  idEtudiant: string;
+
   @Prop({ type: Number })
   notePresentation: number;
 

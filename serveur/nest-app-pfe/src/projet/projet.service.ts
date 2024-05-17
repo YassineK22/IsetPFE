@@ -60,5 +60,13 @@ export class ProjetService {
     }
     return updatedProjet;
   }
+
+  async changeEtatProjetByIdEtudiant(idEtudiant: string, etat: string): Promise<Projet> {
+    const updatedProjet = await this.projetModel.findOneAndUpdate({ idEtudiant }, { etatProjet: etat }, { new: true }).exec();
+    if (!updatedProjet) {
+      throw new NotFoundException('Could not find projet.');
+    }
+    return updatedProjet;
+  }
   
 }

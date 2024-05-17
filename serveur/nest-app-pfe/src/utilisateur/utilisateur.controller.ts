@@ -12,11 +12,12 @@ import { UpdateUtilisateurDto } from './dto';
 import { Utilisateur } from 'src/model/utilisateur.model';
 import { AdminGuard, JwtGuard } from 'src/auth/guard';
 
-@UseGuards(JwtGuard, AdminGuard)
+@UseGuards(JwtGuard)
 @Controller('utilisateur')
 export class UtilisateurController {
   constructor(private readonly utilisateurService: UtilisateurService) {}
 
+  @UseGuards(AdminGuard)
   @Get('search')
   async getAllUsersPageSearch(
     @Query('page') page: number,
@@ -32,19 +33,19 @@ export class UtilisateurController {
     );
   }
 
-  @Get()
+  @Get('ens')
   async getAllEnseignants(
-    @Query('page') page: number,
-    @Query('pageSize') pageSize: number,
+    // @Query('page') page: number,
+    // @Query('pageSize') pageSize: number,
     @Query('searchQuery') searchQuery: string,
     @Query('searchCategory') searchCategory: string,
   ): Promise<Utilisateur[]> {
-    page = page ? +page : 1; // Convert page to a number, default to 1 if not provided
-    pageSize = pageSize ? +pageSize : 10; // Convert pageSize to a number, default to 10 if not provided
+    // page = page ? +page : 1; // Convert page to a number, default to 1 if not provided
+    // pageSize = pageSize ? +pageSize : 10; // Convert pageSize to a number, default to 10 if not provided
 
     return await this.utilisateurService.getAllEnseignantsPageSearch(
-      page,
-      pageSize,
+      // page,
+      // pageSize,
       searchQuery,
       searchCategory,
     );
@@ -72,11 +73,13 @@ export class UtilisateurController {
     );
   }
 
+  @UseGuards(AdminGuard)
   @Get(':id')
   async getUserById(@Param('id') id: string): Promise<Utilisateur> {
     return await this.utilisateurService.getUserById(id);
   }
 
+  @UseGuards(AdminGuard)
   @Post(':id/update')
   async updateUser(
     @Param('id') id: string,
