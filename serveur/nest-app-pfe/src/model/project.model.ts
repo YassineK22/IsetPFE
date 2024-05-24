@@ -32,11 +32,11 @@ export class Projet extends Document {
   @Prop({
     type: String,
     enum: [
-      'premier',
-      'Attpremier',
-      'nonPremier',
-      'enAttente',
-      'enAttenteR',
+      'premier', // accepter le projet
+      'Attpremier', // attendre acceptation du projet
+      'nonPremier', // Projet non accepter
+      'enAttente', // en attente d'acceptation encadrement
+      'enAttenteR', // en attente de vaildation final projet
       'confirmer',
       'annuler',
     ],

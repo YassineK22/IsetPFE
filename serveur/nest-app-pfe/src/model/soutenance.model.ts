@@ -20,11 +20,11 @@ export class Soutenance extends Document {
 
   @Prop({
     enum: [
-      'premier',
-      'Attpremier',
-      'nonPremier',
-      'enAttenteS',
-      'noteDonner',
+      'premier', //Jury Affecter
+      'Attpremier', // Attendre jury affectation
+      'nonPremier', // Refuse de la soutenace
+      'enAttenteS', // Attendre note des jury
+      'noteDonner', 
       'noteValider',
       'noteNValider',
     ],
