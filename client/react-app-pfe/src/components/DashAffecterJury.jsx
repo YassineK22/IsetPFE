@@ -9,25 +9,9 @@ const DashAffecterJury = () => {
   const [jurys, setJury] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchCategory, setSearchCategory] = useState("tous");
-  const [project, setProject] = useState([]);
+  const [soutenance, setSoutenance] = useState([]);
   const payloadSM = JSON.parse(localStorage.getItem("payload_SM"));
 
-  useEffect(() => {
-    const getProjet = async () => {
-      try {
-        const response = await axiosInstance.get(
-          `/soutenance/etudiant/${payloadSM.sub}`
-        );
-
-        setProject(response.data);
-        console.log("projetid" + response.data);
-      } catch (error) {
-        console.error("Error fetching projet:", error);
-      }
-    };
-
-    getProjet();
-  }, []);
 
   const getJury = async () => {
     try {
@@ -65,12 +49,13 @@ const DashAffecterJury = () => {
 
   const addJury = async (jury, type) => {
     try {
+      let response ="";
       if (type === "technique") {
-        await axiosInstance.patch(`/projet/${project._id}`, {
+        response = await axiosInstance.patch(`/soutenance/${soutenance}`, {
           jugeTechnique: jury,
         });
       } else if (type === "presentation") {
-        await axiosInstance.patch(`/projet/${project._id}`, {
+        response = await axiosInstance.patch(`/soutenance/${soutenance}`, {
           jugePresentation: jury,
         });
       }
@@ -91,7 +76,6 @@ const DashAffecterJury = () => {
   const getSoutenace = async () => {
     try {
       const response = await axiosInstance.get(`/soutenance/attpremier`);
-      console.log(response.data);
       setProjects(response.data);
     } catch (error) {
       console.error("Error fetching projet:", error);
@@ -106,7 +90,6 @@ const DashAffecterJury = () => {
     const getSoutenace = async () => {
       try {
         const response = await axiosInstance.get(`/soutenance/attpremier`);
-        console.log(response.data);
         setProjects(response.data);
       } catch (error) {
         console.error("Error fetching projet:", error);
@@ -121,7 +104,6 @@ const DashAffecterJury = () => {
       const response = await axiosInstance.get(
         `/utilisateur/user/${idEtudiant}`
       );
-      console.log(response.data);
       setEtudiant(response.data);
     } catch (error) {
       console.error("Error fetching student data:", error);
@@ -133,7 +115,6 @@ const DashAffecterJury = () => {
       const response = await axiosInstance.patch(
         `/soutenance/change-etat/premier/${idProjet}`
       );
-      console.log(response.data);
       getSoutenace();
     } catch (error) {
       console.error("Error fetching projet data:", error);
@@ -145,7 +126,6 @@ const DashAffecterJury = () => {
       const response = await axiosInstance.patch(
         `/soutenance/change-etat/nonpremier/${idProjet}`
       );
-      console.log(response.data);
       getSoutenace();
     } catch (error) {
       console.error("Error fetching projet data:", error);
@@ -220,7 +200,7 @@ const DashAffecterJury = () => {
                   <button
                     onClick={() => {
                       toggleModal2();
-                      // getEtudiant(soutenance.jugeTechnique);
+                      setSoutenance(soutenance._id)
                     }}
                     className="block mr-1 pr-3 pl-3 pb-1 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
                     type="button"
@@ -232,7 +212,7 @@ const DashAffecterJury = () => {
                   <button
                     onClick={() => {
                       toggleModal2();
-                      // getEtudiant(soutenance.jugePresentation);
+                      setSoutenance(soutenance._id)
                     }}
                     className="block mr-1 pr-3 pl-3 pb-1 text-white bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
                     type="button"
@@ -456,7 +436,7 @@ const DashAffecterJury = () => {
                               onClick={() => {
                                 addJury(jury._id, "technique");
                               }}
-                              className="block mr-1 pr-3 pl-3 pb-1 text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                              className="block mr-1 pr-3 pl-3 pb-1 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
                               type="button"
                             >
                               <span className="material-symbols-outlined">
@@ -467,7 +447,7 @@ const DashAffecterJury = () => {
                               onClick={() => {
                                 addJury(jury._id, "presentation");
                               }}
-                              className="block mr-1 pr-3 pl-3 pb-1 text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
+                              className="block mr-1 pr-3 pl-3 pb-1 text-white  bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
                               type="button"
                             >
                               <span className="material-symbols-outlined">

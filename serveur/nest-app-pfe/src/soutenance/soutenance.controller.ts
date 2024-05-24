@@ -61,7 +61,6 @@ export class SoutenanceController {
     return { soutenance };
   }
 
-  @UseGuards(AdminGuard)
   @Patch(':id')
   async editSoutenance(
     @Param('id') id: string,
