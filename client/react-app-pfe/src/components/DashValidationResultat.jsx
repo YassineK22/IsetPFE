@@ -94,10 +94,10 @@ function DashValidationResultat() {
                 Note Presentation
               </th>
               <th scope="col" className="px-6 py-3">
-                Juje technique
+                Jury technique
               </th>
               <th scope="col" className="px-6 py-3">
-                Juje Presentation
+                Jury Presentation
               </th>
               <th scope="col" className="px-6 py-3">
                 Details
@@ -129,8 +129,31 @@ function DashValidationResultat() {
                 </td>
                 <td className="px-6 py-4">{soutenance.noteTechnique}</td>
                 <td className="px-6 py-4">{soutenance.notePresentation}</td>
-                <td className="px-6 py-4">{soutenance.jugeTechnique}</td>
-                <td className="px-6 py-4">{soutenance.jugePresentation}</td>
+                <td className="px-6 py-4">
+                <button
+                    onClick={() => {
+                      toggleModal();
+                      getEtudiant(soutenance.jugeTechnique);
+                    }}
+                    className="block mr-1 pr-3 pl-3 pb-1 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+                    type="button"
+                  >
+                    <span className="material-symbols-outlined">
+                      visibility
+                    </span>
+                  </button></td>
+                <td className="px-6 py-4"><button
+                    onClick={() => {
+                      toggleModal();
+                      getEtudiant(soutenance.jugePresentation);
+                    }}
+                    className="block mr-1 pr-3 pl-3 pb-1 text-white bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
+                    type="button"
+                  >
+                    <span className="material-symbols-outlined">
+                      visibility
+                    </span>
+                  </button></td>
                 <td className="px-6 py-4">
                   <a
                     onClick={() => {

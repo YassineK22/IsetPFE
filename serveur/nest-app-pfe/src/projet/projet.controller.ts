@@ -89,7 +89,7 @@ export class ProjetController {
 
   @Patch('change-etat/enAttenteR/:id')
   async changeEtatEnAttenteR(@Param('id') id: string) {
-    return await this.projetService.changeEtatProjet(id, 'enAttente');
+    return await this.projetService.changeEtatProjet(id, 'enAttenteR');
   }
 
 

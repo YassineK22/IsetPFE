@@ -45,6 +45,7 @@ const Dashboard = () => {
         <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
         <main>
+        <br />
           {tab === "Soutenance" &&
             payloadSM &&
             payloadSM.role === "etudiant" && <DashSoutenanceE />}
